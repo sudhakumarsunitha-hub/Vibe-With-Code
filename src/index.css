@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-cyan: #00f3ff;
+  --color-neon-pink: #ff00ff;
+  --color-neon-purple: #bc13fe;
+  --color-neon-green: #39ff14;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(188, 19, 254, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 20% 20%, rgba(0, 243, 255, 0.05) 0%, transparent 30%);
+  }
+}
+
+@layer utilities {
+  .neon-border-cyan {
+    box-shadow: 0 0 5px #00f3ff, 0 0 10px #00f3ff;
+    border: 1px solid #00f3ff;
+  }
+  .neon-border-pink {
+    box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+    border: 1px solid #ff00ff;
+  }
+  .neon-text-cyan {
+    text-shadow: 0 0 5px #00f3ff, 0 0 10px #00f3ff;
+  }
+  .neon-text-pink {
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+  }
+  .neon-text-green {
+    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+  }
+
+  /* Glitch Animations */
+  @keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+  }
+
+  @keyframes glitch-skew {
+    0% { transform: skew(0deg); }
+    20% { transform: skew(-1deg); }
+    40% { transform: skew(1deg); }
+    60% { transform: skew(-0.5deg); }
+    80% { transform: skew(0.5deg); }
+    100% { transform: skew(0deg); }
+  }
+
+  .glitch-effect {
+    position: relative;
+    animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+  }
+
+  .glitch-effect::before,
+  .glitch-effect::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-effect::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00ff;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+  }
+
+  .glitch-effect::after {
+    left: -2px;
+    text-shadow: -2px 0 #00f3ff, 2px 2px #ff00ff;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    5% { clip: rect(70px, 9999px, 71px, 0); }
+    10% { clip: rect(29px, 9999px, 83px, 0); }
+    15% { clip: rect(16px, 9999px, 91px, 0); }
+    20% { clip: rect(2px, 9999px, 23px, 0); }
+    25% { clip: rect(63px, 9999px, 6px, 0); }
+    30% { clip: rect(34px, 9999px, 78px, 0); }
+    35% { clip: rect(17px, 9999px, 11px, 0); }
+    40% { clip: rect(64px, 9999px, 36px, 0); }
+    45% { clip: rect(46px, 9999px, 65px, 0); }
+    50% { clip: rect(18px, 9999px, 35px, 0); }
+    55% { clip: rect(42px, 9999px, 78px, 0); }
+    60% { clip: rect(99px, 9999px, 13px, 0); }
+    65% { clip: rect(53px, 9999px, 85px, 0); }
+    70% { clip: rect(15px, 9999px, 13px, 0); }
+    75% { clip: rect(57px, 9999px, 98px, 0); }
+    80% { clip: rect(34px, 9999px, 42px, 0); }
+    85% { clip: rect(17px, 9999px, 47px, 0); }
+    90% { clip: rect(47px, 9999px, 25px, 0); }
+    95% { clip: rect(99px, 9999px, 97px, 0); }
+    100% { clip: rect(45px, 9999px, 98px, 0); }
+  }
+
+  @keyframes glitch-anim2 {
+    0% { clip: rect(12px, 9999px, 56px, 0); }
+    5% { clip: rect(25px, 9999px, 6px, 0); }
+    10% { clip: rect(54px, 9999px, 33px, 0); }
+    15% { clip: rect(99px, 9999px, 77px, 0); }
+    20% { clip: rect(79px, 9999px, 63px, 0); }
+    25% { clip: rect(8px, 9999px, 16px, 0); }
+    30% { clip: rect(52px, 9999px, 76px, 0); }
+    35% { clip: rect(36px, 9999px, 11px, 0); }
+    40% { clip: rect(95px, 9999px, 6px, 0); }
+    45% { clip: rect(14px, 9999px, 92px, 0); }
+    50% { clip: rect(44px, 9999px, 27px, 0); }
+    55% { clip: rect(86px, 9999px, 98px, 0); }
+    60% { clip: rect(67px, 9999px, 83px, 0); }
+    65% { clip: rect(91px, 9999px, 85px, 0); }
+    70% { clip: rect(36px, 9999px, 13px, 0); }
+    75% { clip: rect(77px, 9999px, 11px, 0); }
+    80% { clip: rect(21px, 9999px, 67px, 0); }
+    85% { clip: rect(89px, 9999px, 54px, 0); }
+    90% { clip: rect(24px, 9999px, 24px, 0); }
+    95% { clip: rect(12px, 9999px, 92px, 0); }
+    100% { clip: rect(82px, 9999px, 64px, 0); }
+  }
+
+  .scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 9999;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    position: absolute;
+    bottom: 100%;
+    animation: scanline 10s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% { bottom: 100%; }
+    80% { bottom: 100%; }
+    100% { bottom: -100px; }
+  }
+
+  .static-noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://media.giphy.com/media/oEI9uWUqnW3CeEnwL6/giphy.gif');
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 10000;
+  }
+}
